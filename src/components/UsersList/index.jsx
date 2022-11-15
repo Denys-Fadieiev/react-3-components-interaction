@@ -11,6 +11,8 @@
 // Interaction Tasks:
 // Добавте пользователям свойство likes, показывающее количество их лайков. Добавте  в верстку Пользователя кнопку, позволяющую лайкнуть пользователя. Лайкнуть его кнопкой можно только один раз
 
+// * Добавить в верстку Пользователя кнопку удаления пользователя. При нажатии пользователь должен перестать отображатся в верстке и исчезнуть из состояния.
+
 import User from '../User';
 import React, { Component } from 'react';
 
@@ -25,14 +27,25 @@ class UserList extends Component {
     ],
   }
 
+  handleLike = (userId) => {
+    this.setState ({
+      users: this.state.users.map((user) => {
+        return {
+          isLike: userId === user.id ? true : user.isLike,
+        }
+      }),
+    });
+  };
+
   render() {
-    const usersListRender = this.state.users.map(({ id, name, surname, isLike}) => (
+    const usersListRender = this.state.users.map(({id, name, surname, isLike}) => (
       <li key={id}>
         <User
         id={id}
         name={name}
         surname={surname}
         isLike={isLike}
+        handleLike={this.handleLike}
         />
       </li>
     ))

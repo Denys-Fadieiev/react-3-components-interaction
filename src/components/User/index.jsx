@@ -11,11 +11,13 @@
 // Interaction Tasks:
 // Добавте пользователям свойство likes, показывающее количество их лайков. Добавте  в верстку Пользователя кнопку, позволяющую лайкнуть пользователя. Лайкнуть его кнопкой можно только один раз
 
+// * Добавить в верстку Пользователя кнопку удаления пользователя. При нажатии пользователь должен перестать отображатся в верстке и исчезнуть из состояния.
+
 import React from "react";
 
 class User extends React.Component {
   render() {
-    const {id, name, surname, isLike} = this.props;
+    const {id, name, surname, isLike, handleLike} = this.props;
     return(
       <>
         <p>
@@ -23,6 +25,7 @@ class User extends React.Component {
         </p>
         <p>{name} {surname}</p>
         <p>Likes: {isLike ? 1 : 0}</p>
+        <button onClick={() => handleLike(id)} disabled={isLike}>Like </button>
       </>
     )
   }
