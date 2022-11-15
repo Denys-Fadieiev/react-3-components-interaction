@@ -17,7 +17,7 @@ import React from "react";
 
 class User extends React.Component {
   render() {
-    const {id, name, surname, isLike, handleLike} = this.props;
+    const {id, name, surname, isLike, handleLike, deleteUser} = this.props;
     return(
       <>
         <p>
@@ -26,6 +26,7 @@ class User extends React.Component {
         <p>{name} {surname}</p>
         <p>Likes: {isLike ? 1 : 0}</p>
         <button onClick={() => handleLike(id)} disabled={isLike}>Like </button>
+        <button onClick={() => deleteUser(id)}>Delete user</button>
       </>
     )
   }

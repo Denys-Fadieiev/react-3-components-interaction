@@ -37,6 +37,11 @@ class UserList extends Component {
     });
   };
 
+  deleteUser = (userId) => {
+    this.setState ({
+      users: this.state.users.filter((user) => userId !== user.id)
+    })
+  }
   render() {
     const usersListRender = this.state.users.map(({id, name, surname, isLike}) => (
       <li key={id}>
@@ -46,6 +51,7 @@ class UserList extends Component {
         surname={surname}
         isLike={isLike}
         handleLike={this.handleLike}
+        deleteUser={this.deleteUser}
         />
       </li>
     ))
