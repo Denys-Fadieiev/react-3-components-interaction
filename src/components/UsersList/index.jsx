@@ -31,6 +31,7 @@ class UserList extends Component {
     this.setState ({
       users: this.state.users.map((user) => {
         return {
+          ...user,
           isLike: userId === user.id ? true : user.isLike,
         }
       }),
